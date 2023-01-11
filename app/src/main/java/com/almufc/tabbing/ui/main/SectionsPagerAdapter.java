@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.almufc.tabbing.R;
+import com.almufc.tabbing.fragments.Page1;
+import com.almufc.tabbing.fragments.Page2;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -29,14 +31,23 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+        //return PlaceholderFragment.newInstance(position + 1);
+        switch(position)
+        {
+            case 0:
+                return new Page1();
+            case 1:
+                return new Page2();
+            default:
+                return null;
+        }
     }
 
-    @Nullable
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return mContext.getResources().getString(TAB_TITLES[position]);
-    }
+//    @Nullable
+//    @Override
+//    public CharSequence getPageTitle(int position) {
+//        return mContext.getResources().getString(TAB_TITLES[position]);
+//    }
 
     @Override
     public int getCount() {
